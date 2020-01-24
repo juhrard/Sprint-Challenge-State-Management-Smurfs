@@ -35,6 +35,11 @@ class Form extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     this.props.postSmurf(this.state);
+    this.setState({
+      name: '',
+      age: 0,
+      height: '',
+    })
   }
 
   render() {
