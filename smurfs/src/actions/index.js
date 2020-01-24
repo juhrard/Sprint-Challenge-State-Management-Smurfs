@@ -40,7 +40,7 @@ export const deleteSmurf = (smurf) => {
   return dispatch => {
     dispatch ({ type: "DELETE_SMURF", payload: smurf });
     axios
-      .delete(`http://localhost:3333/smurfs`, smurf.id)
+      .delete(`http://localhost:3333/smurfs/${smurf.id}`)
       .then(response => {
         console.log(response);
         dispatch({type: 'DELETE_DATA_SUCCESS', payload: response.data})
