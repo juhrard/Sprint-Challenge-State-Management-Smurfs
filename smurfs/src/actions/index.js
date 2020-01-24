@@ -27,7 +27,18 @@ export const postSmurf = (smurf) => {
       })
       .then(response => {
         console.log(response);
-        dispatch({type: 'POSTING_DATA_SUCCESS', payload: response.data})
+        dispatch({type: 'POSTING_DATA_SUCCESS', payload: response.data});
+        dispatch({ type: "FETCHING_ACTIVITY_START" });
+        axios
+          .get(`http://localhost:3333/smurfs`)
+          .then(response => {
+            console.log(response);
+            dispatch({type: 'FETCHING_DATA_SUCCESS', payload: response.data})
+          })
+          .catch(error => {
+            console.log(error);
+            dispatch({type: 'FETCHING_DATA_FAIL', payload: error})
+          });
       })
       .catch(error => {
         console.log(error);
@@ -44,6 +55,17 @@ export const deleteSmurf = (smurf) => {
       .then(response => {
         console.log(response);
         dispatch({type: 'DELETE_DATA_SUCCESS', payload: response.data})
+        dispatch({ type: "FETCHING_ACTIVITY_START" });
+        axios
+          .get(`http://localhost:3333/smurfs`)
+          .then(response => {
+            console.log(response);
+            dispatch({type: 'FETCHING_DATA_SUCCESS', payload: response.data})
+          })
+          .catch(error => {
+            console.log(error);
+            dispatch({type: 'FETCHING_DATA_FAIL', payload: error})
+          });
       })
       .catch(error => {
         console.log(error);
