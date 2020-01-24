@@ -17,7 +17,7 @@ class Form extends React.Component {
     super(props);
     this.state = {
       name: '',
-      age: 0,
+      age: '',
       height: '',
     }
   }
@@ -37,7 +37,7 @@ class Form extends React.Component {
     this.props.postSmurf(this.state);
     this.setState({
       name: '',
-      age: 0,
+      age: '',
       height: '',
     })
   }
